@@ -11,7 +11,7 @@ def msg_processor(msg_code):
         - 3 : Successfully deleted user
 		- 4 : 해당 이름을 가진 상품의 가격 정보가 없습니다. 다른 상품을 검색해 보세요. 
 		- 5 : 식재료의 이름을 입력하세요.
-		- 6 : 구매한 가격을 입력하세요. 
+		- 6 : 구매한 가격을 제대로 입력하세요. 
     '''
 
     msg_code = int(msg_code)
@@ -42,7 +42,7 @@ def msg_processor(msg_code):
 			'warning'
 		),
 		(
-			'식재료를 구입한 가격을 입력하세요.',
+			'식재료를 구입한 가격을 제대로 입력하세요.',
 			'warning'
 		)
     ]
