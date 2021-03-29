@@ -37,14 +37,16 @@ def add_cart():
 	except:
 		return "Needs product name", 400
 	
-	if len(name) is 0: #상품을 입력하지 않은 경우
+	if len(name)==0: #상품을 입력하지 않은 경우
 		return redirect(url_for('cart.cart_index', msg_code=5))
-	if len(price) is 0: #가격을 입력하지 않은 경우
+	if len(price)==0: #가격을 입력하지 않은 경우
 		# if price is None으로 했을 때 안잡힌다
 		return redirect(url_for('cart.cart_index', msg_code=6))
-	if type(price) is not int : # 숫자외에 입력되었을 경우
+	try:
+		int(price)
+	except: # 숫자외에 입력되었을 경우
 		return redirect(url_for('cart.cart_index', msg_code=6))
-
+	
 	# db에서 price 조회하기
 	p_product = Product.query.filter(Product.name==name).first()
 	if p_product:
