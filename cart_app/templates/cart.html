@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block alert %}
+{% if alert_msg %}
+<div class="alert alert-{{ alert_msg.type }}" role="alert">
+  {{ alert_msg.msg }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block title %}
+Your Cart 🛒
+{% endblock %}
+
+{% block lead %}
+공시 가격을 알고 싶은 농수산물을 카트에 담아보세요.🥬
+{% endblock %}
+
+{% block main_body %}
+<form method="POST" action="/cart">
+  <input name="name" style="margin-bottom:10px" class="form-control" type="text" placeholder="카트에 담을 식재료를 입력하세요. ex) 무">
+  <input name="price" style="margin-bottom:10px" class="form-control" type="text" placeholder="무의 가격은 얼마입니까?"> 
+  <input type="submit" class="btn btn-primary" value="Add" />
+</form>
+
+
+{% if cart_list %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+	  <th scopr="col">👩‍🌾</th>
+      <th scope="col">Name</th>
+      <th scope="col">MyPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cart in cart_list %}
+    <tr>
+      <th scope="row">{{ cart.id }}</th>
+	  <td><img src="../static/images/item_{{ cart.itemcode }}.png" alt="" class="img"></td>
+      <td>{{ cart.name }}</td>
+      <td>{{ cart.myprice }}</td>
+      <td>
+        <a class="btn btn-secondary", href='/cart/{{ cart.id }}'>
+          Delete
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

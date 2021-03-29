@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Compare Price 🍎
+{% endblock  %}
+
+{% block lead  %}
+공시 가격과 비교해 최적의 구매 시기를 찾아보세요.🛍
+{% endblock  %}
+
+{% block main_body  %}
+<form method="POST" action="/compare">
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">비교할 식재료</label>
+    <select name="name" class="form-control" id="exampleFormControlSelect1">
+      {% for cart in carts %}
+      <option value={{cart.name}}>{{cart.name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Compare" />
+</form>
+
+{% if comparison %}
+<p></p>
+<p> 🌽 구매 가격에서 공시 가격을 뺀 값은'{{comparison}}'원 입니다. </p>
+<p> 🥕 0인 경우 주말, 공휴일의 관계로 가격 데이터가 수집되지 않았습니다. </p>
+{% endif %}
+
+{% if comparison %}
+<table class="table">
+  <thead>
+    <tr>
+	  <th scope="col">👩‍🌾</th>
+      <th scope="col">식재료</th>
+      <th scope="col">종류</th>
+	  <th scope="col">단위</th> 
+	  <th scope="col">오늘 가격</th>
+	  <th scope="col">어제 가격</th>
+	  <th scope="col">1주일 전 가격</th>
+	  <th scope="col">2주일 전 가격</th>
+	  <th scope="col">한달 전 가격</th>
+    </tr>
+  </thead>
+  <tbody>	
+    <tr>
+	  <th><img src="../static/images/item_{{ product.itemcode }}.png" alt="" class="img"></th>
+	  <th>{{ product.name }}</th>
+	  <td>{{ product.kindname }}</td>
+	  <td>{{ product.unit }}</td>
+	  <td>{{ product.price }}</td>
+	  <td>{{ product.day_bf_price }}</td>
+      <td>{{ product.week_bf_price }}</td>
+	  <td>{{ product.two_week_bf_price }}</td>
+	  <td>{{ product.month_bf_price }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endif %}
+{% endblock  %}
