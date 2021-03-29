@@ -30,6 +30,6 @@ def create_app(config=None):
 
 if __name__ == "__main__":
 	# 배포 위한 포트 설정
-	port = int(os.environ.get("PORT", 5000))
+	port = int(os.environ.get("PORT", 33507))
 	app = create_app()
 	app.run(host="0.0.0.0", port=port)
