@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import config
+import os
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -28,5 +29,7 @@ def create_app(config=None):
 	return app
 
 if __name__ == "__main__":
+	# 배포 위한 포트 설정
+	port = int(os.environ.get("PORT", 5000))
 	app = create_app()
-	app.run(debug=True)
+	app.run(host="0.0.0.0", port=port)
