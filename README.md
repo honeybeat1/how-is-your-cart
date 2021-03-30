@@ -3,7 +3,7 @@ Compare your cart to official price
 
 
 
-https://howisyourcart.herokuapp.com/compare
+https://howisyourcart.herokuapp.com/
 
 
 ## Development Env
