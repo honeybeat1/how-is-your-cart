@@ -17,4 +17,4 @@
 
 
 ## DB SCHEMA
-<img src="./howisyourcart_dbschma.png" width="500">
+<img src="./db_schema.png" width="500">
