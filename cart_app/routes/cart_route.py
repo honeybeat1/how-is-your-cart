@@ -18,15 +18,18 @@ def cart_index():
 
 	# 템플릿 파일에 넘겨줄 수 있게 맞춰서 넘겨주기
 	cart_list = []
+	totalprice = 0
 	for p_cart in carts:
 		cart = {}
 		cart['id'] = p_cart.id
 		cart['name'] = p_cart.name
 		cart['itemcode'] = p_cart.itemcode
 		cart['myprice'] = p_cart.myprice
+		totalprice += p_cart.myprice
+		cart['totalprice'] = totalprice
 		cart_list.append(cart)
 	
-	return render_template('cart.html', alert_msg=alert_msg, cart_list=cart_list)
+	return render_template('cart.html', alert_msg=alert_msg, cart_list=cart_list, totalprice=totalprice)
 
 @bp.route('/cart', methods=['POST'])
 def add_cart():
