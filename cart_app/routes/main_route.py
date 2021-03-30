@@ -8,11 +8,6 @@ from cart_app import db
 
 bp = Blueprint('main', __name__)
 
-# @bp.route('/')
-# def index():
-# 	""" Home page """
-# 	return render_template('index.html')
-
 @bp.route('/')
 def loading():
 	return render_template('loading.html');
