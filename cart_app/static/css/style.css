@@ -1,0 +1,26 @@
+body {
+	background-color:#f1f8f4;
+}
+.navbar {
+	background-color: #f1f8f4!important;
+}
+
+/* loader */
+#loader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+#loading {
+	margin: 50px;
+    animation: rotate_image 2s linear infinite;
+    transform-origin: 50% 50%;
+}
+ 
+@keyframes rotate_image{
+	100% {
+    	transform: rotate(360deg);
+    }
+}

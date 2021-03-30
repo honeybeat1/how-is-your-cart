@@ -14,6 +14,10 @@ bp = Blueprint('main', __name__)
 # 	return render_template('index.html')
 
 @bp.route('/')
+def loading():
+	return render_template('loading.html');
+
+@bp.route('/main')
 def add_price_data():
 	""" 오늘 기준 가격 데이터를 api에서 호출한 뒤 
 		DB에 저장합니다 """

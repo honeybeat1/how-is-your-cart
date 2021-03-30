@@ -11,10 +11,14 @@ Compare Price 🍎
 {% block main_body  %}
 <form method="POST" action="/compare">
   <div class="form-group">
-    <label for="exampleFormControlSelect1">비교할 식재료</label>
-    <select name="name" class="form-control" id="exampleFormControlSelect1">
+    <label for="exampleFormControlSelect">비교할 식재료</label>
+    <select name="name" class="form-control" id="exampleFormControlSelect">
       {% for cart in carts %}
-      <option value={{cart.name}}>{{cart.name}}</option>
+        {% if cart.name == product.name %}
+          <option value={{cart.name}} selected>{{cart.name}}</option> 
+        {% else %}
+          <option value={{cart.name}}>{{cart.name}}</option>
+        {% endif %}
       {% endfor %}
     </select>
   </div>
